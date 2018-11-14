@@ -1,22 +1,46 @@
 <template>
-    <v-card color="grey lighten-4" flat height="200px" tile>
-        <v-toolbar prominent extended dark>
-            <v-toolbar-side-icon></v-toolbar-side-icon>
-            <v-toolbar-title>暨大課程查詢系統</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-toolbar-items class="hidden-sm-and-down">
-                <v-btn flat>問題回報</v-btn>
-                <v-btn flat>參與協助</v-btn>
-            </v-toolbar-items>
-            <v-btn icon>
-                <v-icon>search</v-icon>
+    <v-toolbar dark>
+        <v-btn icon>
+            <v-icon>school</v-icon>
+        </v-btn>
+        <v-toolbar-title class="white--text">暨大課程查詢</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+            <v-btn flat @click.native.stop="dialog = true">
+                問題回報
             </v-btn>
-            <v-btn icon>
-                <v-icon>favorite</v-icon>
-            </v-btn>
-            <v-btn icon>
-                <v-icon>more_vert</v-icon>
-            </v-btn>
-        </v-toolbar>
-    </v-card>
+            <v-btn flat href="https://github.com/yiyu0x/ncnu-course-X/issues">參與協助</v-btn>
+        </v-toolbar-items>
+        <v-dialog v-model="dialog" width="500">
+            <v-card>
+                <v-card-title class="headline grey lighten-2" primary-title>
+                    問題回報
+                </v-card-title>
+                <v-card-text>
+                    <p>如果有任何使用上的問題、改進空間，請來信告知( <b>yiyu0x@icloud.com</b>)</p>
+                    <p>如果你有能力協助系統改善，請點擊 "參與協助" 發送PR </p>
+                </v-card-text>
+                <v-divider>
+                </v-divider>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="primary" flat @click="dialog = false">
+                        關閉
+                    </v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+        <v-btn icon>
+            <v-icon>more_vert</v-icon>
+        </v-btn>
+    </v-toolbar>
 </template>
+<script>
+export default {
+    data() {
+        return {
+            dialog: false
+        }
+    }
+}
+</script>

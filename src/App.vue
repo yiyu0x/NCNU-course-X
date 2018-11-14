@@ -2,18 +2,18 @@
     <v-app>
     <ToolBar/>
     <v-container fluid>
-      <!-- <router-view></router-view> -->
       <SelectBox/>
-      <br/>
       <TableView/>
     </v-container>
+    <Footer/>
   </v-app>
 </template>
 
 <script>
-import ToolBar from './components/ToolBar'
-import SelectBox from './components/SelectBox'
-import TableView from './components/TableView'
+import ToolBar from './components/ToolBar';
+import SelectBox from './components/SelectBox';
+import TableView from './components/TableView';
+import Footer from './components/Footer';
 
 // import Table from './components/Table'
 
@@ -22,7 +22,8 @@ export default {
   components: {
     ToolBar,
     SelectBox,
-    TableView
+    TableView,
+    Footer
     // Table
   },
   data () {
