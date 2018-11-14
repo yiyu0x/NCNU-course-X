@@ -49,7 +49,7 @@ export default {
         })
     },
     mounted() {
-        axios.get('http://127.0.0.1:5487/api')
+        axios.get('http://178.128.61.189:5488/api')
             .then(response => {
                 this.info = response.data;
                 this.isLoading = false;

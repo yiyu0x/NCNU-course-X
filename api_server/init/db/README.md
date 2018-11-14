@@ -7,7 +7,7 @@ node ../data/app.js
 #course_data.json need to format(delete outside key) to json array.
 cp ../data/course_data.json ~/docker/volumes/db-data/
 
-docker run -p 27017:27017 -v ~/docker/volumes/db-data:/tmp -d --entrypoint=mongod mongo
+docker run -p 27017:27017 -v ~/docker/volumes/db-data:/tmp -d --entrypoint=mongod mongo --bind_ip_all
 
 docker exec -it <container-id> bash
 
