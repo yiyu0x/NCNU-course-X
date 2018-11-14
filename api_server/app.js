@@ -31,6 +31,14 @@ app.get('/api/faculty/:fac', function (req, res) {
     });
 });
 
+app.get('/api/department/:dep', function (req, res) {
+    const dep = req.params.dep;
+    Mongo.find({department: dep}, fields, {sort: {cousre_id: 1}}, function (err, doc) {
+        if (err) res.status(500).send('API error');
+        else res.send(doc);
+    });
+});
+
 app.get('/api/getDep/:fac', function (req, res) {
     const fac = req.params.fac;
     const fields = {_id: 0, department: 1};
