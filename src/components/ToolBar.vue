@@ -18,7 +18,7 @@
                 </v-card-title>
                 <v-card-text>
                     <p>如果有任何使用上的問題、改進空間，請來信告知( <b>yiyu0x@icloud.com</b>)</p>
-                    <p>如果你有能力協助系統改善，請點擊 "參與協助" 發送PR </p>
+                    <p>如果你有能力協助系統改善，請點擊 "參與協助" 發送 issue 或 PR </p>
                 </v-card-text>
                 <v-divider>
                 </v-divider>
@@ -30,9 +30,6 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-btn icon>
-            <v-icon>more_vert</v-icon>
-        </v-btn>
     </v-toolbar>
 </template>
 <script>
