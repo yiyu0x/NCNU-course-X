@@ -12,7 +12,8 @@
 </template>
 <script>
 import axios from 'axios';
-import { serverBus } from '../main';
+import { serverBus, base_url } from '../main';
+
 export default {
     data: () => ({
         faculty: ['人文學院', '管理學院', '科技學院', '教育學院'],
@@ -22,13 +23,13 @@ export default {
     }),
     methods: {
         getDataFac (fac) {
-            axios.get('http://178.128.61.189:5488/api/faculty/' + fac)
+            axios.get(base_url + '/api/faculty/' + fac)
                 .then(response => {
                     serverBus.$emit('serverSelected', response.data);
                 });
         },
         getDataDep (dep) {
-            axios.get('http://178.128.61.189:5488/api/department/' + dep)
+            axios.get(base_url +'/api/department/' + dep)
                 .then(response => {
                     serverBus.$emit('serverSelected', response.data);
                 });
@@ -36,7 +37,7 @@ export default {
     },
     watch: {
         fac: function() {
-            axios.get('http://178.128.61.189:5488/api/getDep/' + this.fac)
+            axios.get(base_url + '/api/getDep/' + this.fac)
                 .then(response => {
                     this.department = response.data;
                 });

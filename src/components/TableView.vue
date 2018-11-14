@@ -22,7 +22,7 @@
 </template>
 <script>
 import axios from 'axios';
-import { serverBus } from '../main';
+import { serverBus, base_url } from '../main';
 export default {
     data() {
         return {
@@ -49,7 +49,7 @@ export default {
         })
     },
     mounted() {
-        axios.get('http://178.128.61.189:5488/api')
+        axios.get(base_url + '/api')
             .then(response => {
                 this.info = response.data;
                 this.isLoading = false;
