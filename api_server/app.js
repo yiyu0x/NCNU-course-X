@@ -17,10 +17,38 @@ app.all('*', function (req, res, next) {
 });
 
 app.get('/api/', function (req, res) {
-	Mongo.find({}, fields, {limit: 100, sort: {cousre_id: 1}}, function (err, doc) {
+	Mongo.find({}, fields, {limit: 30, sort: {cousre_id: 1}}, function (err, doc) {
 		if (err) res.status(500).send('API error');
 		else res.send(doc);
 	});
+});
+
+app.get('/api/faculty/:fac', function (req, res) {
+    const fac = req.params.fac;
+    Mongo.find({faculty: fac}, fields, {sort: {cousre_id: 1}}, function (err, doc) {
+        if (err) res.status(500).send('API error');
+        else res.send(doc);
+    });
+});
+
+app.get('/api/getDep/:fac', function (req, res) {
+    const fac = req.params.fac;
+    const fields = {_id: 0, department: 1};
+    Mongo.find({faculty: fac}, fields, {sort: {cousre_id: 1}}, function (err, doc) {
+        if (err) res.status(500).send('API error');
+        else {
+            // doc convert to array
+            let box = [];
+            doc = doc.map(o => o.toObject());
+            doc.forEach(function(value){
+                box.push(value['department']);
+            });
+            let set = new Set(box);
+            // set back to array
+            set = [...set]; // set back to array
+            res.send(set);
+        }
+    });
 });
 
 // Mongo.find({}, fields, {sort: {cousre_id: 1}}, function (err, data) {

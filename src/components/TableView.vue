@@ -3,7 +3,7 @@
         <v-card-title>
             課程資訊
             <v-spacer></v-spacer>
-            <v-text-field v-model="search" append-icon="search" label="萬用篩選器 (任意輸入文字來篩選結果)" single-line hide-details></v-text-field>
+            <v-text-field v-model="search" append-icon="search" label="篩選器 (任意輸入文字來篩選結果)" single-line hide-details></v-text-field>
         </v-card-title>
         <v-data-table :headers="headers" :items="info" :loading="isLoading" :search="search" hide-actions class="elevation-1" dark>
             <v-progress-linear slot="progress" color="green" indeterminate></v-progress-linear>
@@ -21,7 +21,8 @@
     </v-card>
 </template>
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import { serverBus } from '../main';
 export default {
     data() {
         return {
@@ -39,6 +40,13 @@ export default {
             info: [],
             isLoading: true
         }
+    },
+    created() {
+        // Using the service bus
+        this.isLoading = true;
+        serverBus.$on('serverSelected', (response) => {
+            this.info = response;
+        })
     },
     mounted() {
         axios.get('http://127.0.0.1:5487/api')
