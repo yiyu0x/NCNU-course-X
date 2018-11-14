@@ -22,13 +22,13 @@ export default {
     }),
     methods: {
         getDataFac (fac) {
-            axios.get('http://127.0.0.1:5487/api/faculty/' + fac)
+            axios.get('http://178.128.61.189:5488/api/faculty/' + fac)
                 .then(response => {
                     serverBus.$emit('serverSelected', response.data);
                 });
         },
         getDataDep (dep) {
-            axios.get('http://127.0.0.1:5487/api/department/' + dep)
+            axios.get('http://178.128.61.189:5488/api/department/' + dep)
                 .then(response => {
                     serverBus.$emit('serverSelected', response.data);
                 });
@@ -36,7 +36,7 @@ export default {
     },
     watch: {
         fac: function() {
-            axios.get('http://127.0.0.1:5487/api/getDep/' + this.fac)
+            axios.get('http://178.128.61.189:5488/api/getDep/' + this.fac)
                 .then(response => {
                     this.department = response.data;
                 });
