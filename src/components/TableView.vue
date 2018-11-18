@@ -9,7 +9,7 @@
             <v-progress-linear slot="progress" color="green" indeterminate></v-progress-linear>
             <template slot="items" slot-scope="props">
                 <td class="text-xs">{{ props.item.course_cname }}</td>
-                <td class="text-xs">{{ props.item.cousre_id }}</td>
+                <td class="text-xs">{{ props.item.course_id }}</td>
                 <td class="text-xs">{{ props.item.department }}</td>
                 <td class="text-xs">{{ props.item.division }}</td>
                 <td class="text-xs">{{ props.item.course_credit }}</td>
@@ -28,7 +28,7 @@ export default {
         return {
             search: '',
             headers: [{ text: '課程名稱', align: 'left', value: 'course_cname', sortable: false },
-                { text: '課號', value: 'cousre_id' },
+                { text: '課號', value: 'course_id' },
                 { text: '開課單位', value: 'department' },
                 { text: '年級', value: 'division' },
                 { text: '學分', value: 'course_credit' },
@@ -49,7 +49,7 @@ export default {
         })
     },
     mounted() {
-        axios.get(base_url + '/api')
+        axios.get(base_url + '/api/20')
             .then(response => {
                 this.info = response.data;
                 this.isLoading = false;

@@ -37,7 +37,7 @@ export default {
     },
     watch: {
         fac: function() {
-            axios.get(base_url + '/api/getDep/' + this.fac)
+            axios.get(base_url + '/api/depList/' + this.fac)
                 .then(response => {
                     this.department = response.data;
                 });
