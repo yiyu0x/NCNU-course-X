@@ -1,26 +1,9 @@
-# ncnu_course
 
-## Project setup
-```
-npm install
-```
+# 暨大課程搜尋系統
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![](https://i.imgur.com/Zwm2UjE.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 使用工具
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+- vue-cli-3
+- vuetify
