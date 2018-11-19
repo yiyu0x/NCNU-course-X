@@ -8,16 +8,23 @@
         <v-data-table :headers="headers" :items="info" :loading="isLoading" :search="search" hide-actions class="elevation-1" dark>
             <v-progress-linear slot="progress" color="green" indeterminate></v-progress-linear>
             <template slot="items" slot-scope="props">
-                <td class="text-xs">{{ props.item.course_cname }}</td>
-                <td class="text-xs">{{ props.item.course_id }}</td>
-                <td class="text-xs">{{ props.item.department }}</td>
-                <td class="text-xs">{{ props.item.division }}</td>
-                <td class="text-xs">{{ props.item.course_credit }}</td>
-                <td class="text-xs">{{ props.item.time }}</td>
-                <td class="text-xs">{{ props.item.location }}</td>
-                <td class="text-xs">{{ props.item.teacher }}</td>
+                <tr @click="showInfo(props.item.course_id)">
+                    <td class="text-xs">{{ props.item.course_cname }}</td>
+                    <td class="text-xs">{{ props.item.course_id }}</td>
+                    <td class="text-xs">{{ props.item.department }}</td>
+                    <td class="text-xs">{{ props.item.division }}</td>
+                    <td class="text-xs">{{ props.item.course_credit }}</td>
+                    <td class="text-xs">{{ props.item.time }}</td>
+                    <td class="text-xs">{{ props.item.location }}</td>
+                    <td class="text-xs">{{ props.item.teacher }}</td>
+                </tr>
             </template>
         </v-data-table>
+        <v-dialog v-model="dialog" max-width="40%">
+            <v-card >
+                <iframe style="width:800px; height: 700px" :src="dataUrl"></iframe>
+            </v-card>
+        </v-dialog>
     </v-card>
 </template>
 <script>
@@ -38,7 +45,9 @@ export default {
 
             ],
             info: [],
-            isLoading: true
+            isLoading: true,
+            dialog: false,
+            dataUrl: ''
         }
     },
     created() {
@@ -54,6 +63,12 @@ export default {
                 this.info = response.data;
                 this.isLoading = false;
             });
+    },
+    methods: {
+        showInfo(id) {
+            this.dataUrl = `https://ccweb.ncnu.edu.tw/student/current_semester_opened_listview.php?showdetail=&year=1071&courseid=${id}&class=0&modal=1&rnd=119581`;
+            this.dialog = true;
+        }
     }
 }
 </script>
