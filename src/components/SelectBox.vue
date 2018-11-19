@@ -8,6 +8,14 @@
                 <v-select v-model="dep" @change="getDataDep(dep)" :items="department" label="系所"></v-select>
             </v-flex>
         </v-layout>
+        <v-layout row wrap>
+            <v-flex xs12 sm6 md3>
+                <v-text-field v-model="teacher_name" @input="getDataTeacher(teacher_name)" label="教師姓名"></v-text-field>
+            </v-flex>
+            <v-flex xs12 sm6 md3>
+                <v-text-field v-model="cname" @input="getDataCourse(cname)" label="課程名稱"></v-text-field>
+            </v-flex>
+        </v-layout>
     </v-container>
 </template>
 <script>
@@ -19,17 +27,31 @@ export default {
         faculty: ['人文學院', '管理學院', '科技學院', '教育學院'],
         department: [],
         fac: '',
-        dep: ''
+        dep: '',
+        teacher_name: '',
+        cname: ''
     }),
     methods: {
-        getDataFac (fac) {
+        getDataFac(fac) {
             axios.get(base_url + '/api/faculty/' + fac)
                 .then(response => {
                     serverBus.$emit('serverSelected', response.data);
                 });
         },
-        getDataDep (dep) {
-            axios.get(base_url +'/api/department/' + dep)
+        getDataDep(dep) {
+            axios.get(base_url + '/api/department/' + dep)
+                .then(response => {
+                    serverBus.$emit('serverSelected', response.data);
+                });
+        },
+        getDataTeacher(name) {
+            axios.get(base_url + '/api/teacher/' + name)
+                .then(response => {
+                    serverBus.$emit('serverSelected', response.data);
+                });
+        },
+        getDataCourse(cname) {
+            axios.get(base_url + '/api/course/' + cname)
                 .then(response => {
                     serverBus.$emit('serverSelected', response.data);
                 });

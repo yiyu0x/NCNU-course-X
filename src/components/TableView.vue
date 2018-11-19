@@ -22,7 +22,7 @@
         </v-data-table>
         <v-dialog v-model="dialog" max-width="40%">
             <v-card >
-                <iframe style="width:800px; height: 700px" :src="dataUrl"></iframe>
+                <iframe style="width:100%; height: 700px" :src="dataUrl"></iframe>
             </v-card>
         </v-dialog>
     </v-card>
