@@ -3,7 +3,15 @@
 
 ![](https://i.imgur.com/Zwm2UjE.png)
 
+## 使用說明
+
+先選擇學院，再選擇系所。
+
+篩選器可查詢您想要的字串，像是教室位置、課程時間、課號等等
+
+
 ## 使用工具
 
 - vue-cli-3
 - vuetify
+- [NCNU-course-API](https://github.com/yiyu0x/NCNU-course-API)
