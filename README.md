@@ -1,26 +1,17 @@
-# ncnu_course
 
-## Project setup
-```
-npm install
-```
+# 暨大課程搜尋系統
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+![](https://i.imgur.com/Zwm2UjE.png)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 使用說明
 
-### Run your tests
-```
-npm run test
-```
+先選擇學院，再選擇系所。
 
-### Lints and fixes files
-```
-npm run lint
-```
+篩選器可查詢您想要的字串，像是教室位置、課程時間、課號等等
+
+
+## 使用工具
+
+- vue-cli-3
+- vuetify
+- [NCNU-course-API](https://github.com/yiyu0x/NCNU-course-API)
