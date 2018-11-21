@@ -10,10 +10,11 @@
         </v-layout>
         <v-layout row wrap>
             <v-flex xs12 sm6 md3>
-                <v-text-field v-model="teacher_name" @input="getDataTeacher(teacher_name)" label="教師姓名"></v-text-field>
+                <v-autocomplete :loading="loading_teacher" :items="items_teacher" :search-input.sync="search_teacher" v-model="teacher_name" cache-items class="mx-3" flat hide-no-data hide-details label="教師姓名" solo-inverted @input="getDataTeacher(teacher_name)"></v-autocomplete>
             </v-flex>
             <v-flex xs12 sm6 md3>
-                <v-text-field v-model="cname" @input="getDataCourse(cname)" label="課程名稱"></v-text-field>
+                <v-autocomplete :loading="loading_course" :items="items_course" :search-input.sync="search_course" v-model="cname" cache-items class="mx-3" flat hide-no-data hide-details label="課程名稱" solo-inverted @input="getDataCourse(cname)"></v-autocomplete>
+                <!--                 <v-text-field v-model="cname" @input="getDataCourse(cname)" label="課程名稱"></v-text-field> -->
             </v-flex>
         </v-layout>
     </v-container>
@@ -29,8 +30,29 @@ export default {
         fac: '',
         dep: '',
         teacher_name: '',
-        cname: ''
+        cname: '',
+        items_teacher: [],
+        items_course: [],
+        loading_teacher: false,
+        loading_course: false,
+        search_teacher: null,
+        search_course: null,
+        select_teacher: null,
+        select_course: null,
+        teacher_name_box: [],
+        course_name_box: []
     }),
+    mounted() {
+        axios.get(base_url + '/api/teacherList/all')
+            .then(response => {
+                this.teacher_name_box = response.data;
+            });
+        axios.get(base_url + '/api/courseList/all')
+            .then(response => {
+                this.course_name_box = response.data;
+            });
+
+    },
     methods: {
         getDataFac(fac) {
             axios.get(base_url + '/api/faculty/' + fac)
@@ -55,6 +77,26 @@ export default {
                 .then(response => {
                     serverBus.$emit('serverSelected', response.data);
                 });
+        },
+        querySelections_teacher(v) {
+            this.loading = true
+            // Simulated ajax query
+            setTimeout(() => {
+                this.items_teacher = this.teacher_name_box.filter(e => {
+                    return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+                })
+                this.loading = false
+            }, 500)
+        },
+        querySelections_course(v) {
+            this.loading = true
+            // Simulated ajax query
+            setTimeout(() => {
+                this.items_course = this.course_name_box.filter(e => {
+                    return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
+                })
+                this.loading = false
+            }, 500)
         }
     },
     watch: {
@@ -63,6 +105,12 @@ export default {
                 .then(response => {
                     this.department = response.data;
                 });
+        },
+        search_teacher(val) {
+            val && val !== this.select_teacher && this.querySelections_teacher(val);
+        },
+        search_course(val) {
+            val && val !== this.select_course && this.querySelections_course(val);
         }
     }
 }
