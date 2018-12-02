@@ -12,6 +12,6 @@
 
 ## 使用工具
 
-- vue-cli-3
-- vuetify
+- [vue-cli](https://github.com/vuejs/vue-cli)
+- [vuetify](https://github.com/vuetifyjs/vuetify)
 - [NCNU-course-API](https://github.com/yiyu0x/NCNU-course-API)
