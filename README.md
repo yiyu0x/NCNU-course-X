@@ -1,7 +1,7 @@
 
 # 暨大課程搜尋系統
 
-![](https://i.imgur.com/0GalQBw.png)
+![](https://i.imgur.com/g2H3Cp8.png)
 
 ## 使用說明
 
