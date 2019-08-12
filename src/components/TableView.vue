@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     showInfo(id) {
-      this.dataUrl = `https://ccweb.ncnu.edu.tw/student/aspmaker_course_opened_detail_viewview.php?showdetail=&year=1072&courseid=${id}&class=0&modal=1&rnd=159132`;
+      this.dataUrl = `https://ccweb.ncnu.edu.tw/student/aspmaker_course_opened_detail_viewview.php?showdetail=&year=1081&courseid=${id}&class=0&modal=1&rnd=159132`;
       this.dialog = true;
     }
   }
