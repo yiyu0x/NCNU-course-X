@@ -3,7 +3,7 @@ import './plugins/vuetify';
 import App from './App.vue';
 import VueAnalytics from 'vue-analytics';
 export const serverBus = new Vue();
-export const base_url = 'https://api.ncnusa.ml';
+export const base_url = 'https://api.yiyu0x.tk';
 Vue.config.productionTip = false;
 
 Vue.use(VueAnalytics, {
